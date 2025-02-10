@@ -3,38 +3,53 @@ import styled from "styled-components";
 import { PokemonContext } from "../../context/PokemonContext";
 import Card from "../../components/Card";
 
-const StDiv = styled.div`
-  width: 100vh;
-  height: 240px;
-  justify-content: center;
-  align-items: center;
-  padding: 0 auto;
-  gap: 10px;
+const DashboardContainer = styled.div`
   display: flex;
-  margin-bottom: 50px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #3466af;
+  width: 100%;
+  min-height: 300px;
+  padding: 20px 0;
+  margin-top: 80px;
+  margin-bottom: 20px;
+`;
+
+const StDiv = styled.div`
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 20px;
 `;
 
 const Dashboard = () => {
   const { selectedPokemons, removePokemon } = useContext(PokemonContext);
 
-  if (selectedPokemons.length > 6)
-    return alert("포켓몬은 최대 6개 저장 가능합니다. 삭제 후 저장해 주세요!");
-
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        flexWrap: "wrap",
-        gap: "10px",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <h2 style={{ marginBottom: "10px" }}>나만의 포켓몬</h2>
+    <DashboardContainer>
+      <h2
+        style={{
+          marginBottom: "10px",
+          color: "white",
+          fontSize: "24px",
+          textAlign: "center",
+          position: "relative",
+          zIndex: "10",
+        }}
+      >
+        나만의 포켓몬
+      </h2>
       <StDiv>
         {selectedPokemons.length === 0 ? (
-          <p>현재 추가된 포켓몬이 없습니다.</p>
+          <p style={{ color: "white", fontSize: "18px" }}>
+            현재 추가된 포켓몬이 없습니다.
+          </p>
         ) : (
           selectedPokemons.map((pokemon) => (
             <Card
@@ -48,7 +63,7 @@ const Dashboard = () => {
           ))
         )}
       </StDiv>
-    </div>
+    </DashboardContainer>
   );
 };
 

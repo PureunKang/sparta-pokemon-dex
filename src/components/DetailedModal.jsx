@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Button from "./Button";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -18,20 +19,7 @@ const ModalContent = styled.div`
   padding: 20px;
   border-radius: 10px;
   text-align: center;
-  width: 300px;
-`;
-
-const CloseButton = styled.button`
-  background: #ff4d4d;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  margin-top: 10px;
-  border-radius: 5px;
-  &:hover {
-    background: #cc0000;
-  }
+  width: 500px;
 `;
 
 const DetailedModal = ({ pokemon, onClose }) => {
@@ -43,7 +31,7 @@ const DetailedModal = ({ pokemon, onClose }) => {
         <h2>{pokemon.korean_name}</h2>
         <img src={pokemon.img_url} alt={pokemon.korean_name} />
         <p>{pokemon.description}</p>
-        <CloseButton onClick={onClose}>닫기</CloseButton>
+        <Button onClick={onClose}>닫기</Button>
       </ModalContent>
     </ModalOverlay>
   );

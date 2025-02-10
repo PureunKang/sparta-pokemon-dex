@@ -12,12 +12,15 @@ const StCard = styled.div`
   align-items: center;
   text-decoration: none;
   background-color: #f8f8f8;
+  overflow: hidden;
+  border-radius: 5px;
   ${({ showTransition }) =>
     showTransition &&
     `
     transition: transform 0.2s;
     &:hover {
-    transform: scale(1.05)}
+    transform: scale(1.05);
+    }
   `}
 `;
 

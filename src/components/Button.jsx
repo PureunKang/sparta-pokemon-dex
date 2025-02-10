@@ -4,8 +4,7 @@ import styled from "styled-components";
 const StButton = styled.button`
   border: none;
   text-decoration: none;
-  background-color: #8b0000;
-  color: #ccc;
+  background-color: #ffcc00;
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 14px;
@@ -15,7 +14,7 @@ const StButton = styled.button`
   margin-top: 10px;
 
   &:hover {
-    background-color: #a52a2a;
+    background-color: #e6b800;
   }
 `;
 
