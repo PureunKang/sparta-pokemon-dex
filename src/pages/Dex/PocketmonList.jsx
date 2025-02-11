@@ -1,10 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
+// import { useContext } from "react";
 import MOCK_DATA from "../../data/mockData";
 import Card from "../../components/Card";
-import { PokemonContext } from "../../context/PokemonContext";
+// import { PokemonContext } from "../../context/PokemonContext";
+import { useDispatch } from "react-redux";
+import { addPokemon } from "../../redux/slices/pokemonSlice";
 
 const PocketmonList = () => {
-  const { addPokemon } = useContext(PokemonContext);
+  // const { addPokemon } = useContext(PokemonContext);
+  const dispatch = useDispatch();
 
   return (
     <div
@@ -22,7 +26,7 @@ const PocketmonList = () => {
           img_url={pokemon.img_url}
           korean_name={pokemon.korean_name}
           linkTo={`/detail?id=${pokemon.id}`}
-          onClick={() => addPokemon(pokemon)}
+          onClick={() => dispatch(addPokemon(pokemon))}
           buttonType="add"
           showTransition={true}
         />

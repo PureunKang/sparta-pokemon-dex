@@ -1,7 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
+// import { useContext } from "react";
 import styled from "styled-components";
-import { PokemonContext } from "../../context/PokemonContext";
+// import { PokemonContext } from "../../context/PokemonContext";
 import Card from "../../components/Card";
+import { useSelector, useDispatch } from "react-redux";
+import { removePokemon } from "../../redux/slices/pokemonSlice";
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -29,7 +32,11 @@ const StDiv = styled.div`
 `;
 
 const Dashboard = () => {
-  const { selectedPokemons, removePokemon } = useContext(PokemonContext);
+  // const { selectedPokemons, removePokemon } = useContext(PokemonContext);
+  const selectedPokemons = useSelector(
+    (state) => state.pokemon.selectedPokemons
+  );
+  const dispatch = useDispatch();
 
   return (
     <DashboardContainer>
@@ -56,7 +63,7 @@ const Dashboard = () => {
               key={pokemon.id}
               img_url={pokemon.img_url}
               korean_name={pokemon.korean_name}
-              onClick={() => removePokemon(pokemon.id)}
+              onClick={() => dispatch(removePokemon(pokemon.id))}
               buttonType="remove"
               showTransition={false}
             />
